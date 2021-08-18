@@ -3,15 +3,13 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux';
 import App from './App';
 import configureStore from './store/configureStore'
-
 import { fetchData } from './store/actions';
-
-import './styles/index.scss';
 import reportWebVitals from './reportWebVitals';
+import './styles/index.scss';
 
 const store = configureStore()
 
-//Dispatch the fetchPosts() before our root component renders
+//Dispatch the fetchData() before our root component renders
 store.dispatch(fetchData())
 
 const renderApp = () =>
