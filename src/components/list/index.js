@@ -1,28 +1,28 @@
 import React from 'react'
 import Group from './Group';
 import { useSelector } from 'react-redux'
+import './index.scss';
 
-const Groups = () => {
+const List = () => {
     const activeTab = useSelector((state) => state.activeTab);
     const showPIIonly = useSelector((state) => state.showPIIonly);
     const searchText = useSelector((state) => state.searchText);
-    const groups = useSelector((state) => state[activeTab]);
+    const list = useSelector((state) => state[activeTab]);
     return (
-      <div className="group-table">
-          <p className="group-item-row header">
-            <span>Name</span>
-            <span>PII</span>
-            <span>Masking</span>
-            <span>Type</span>
+      <section className="list">
+          <p className="row top">
+            <b>Name</b>
+            <b>PII</b>
+            <b>Masked</b>
+            <b>Type</b>
           </p>
-          {groups && Object.entries(groups).map(([key, value], i) => {
+          {list && Object.entries(list).map(([key, value], i) => {
             let items = showPIIonly ? value.filter(item => (item.pii === true)) : value;
             items = searchText ? items.filter(item => (item.type.includes(searchText))) : items;
-            console.log(items);
             return <Group key={i} title={key} items={items} index={i} activeTab={activeTab}/>
           })}
-      </div>
+      </section>
     )
   }
 
-export default Groups;
+export default List;

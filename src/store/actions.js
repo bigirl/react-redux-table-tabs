@@ -1,4 +1,4 @@
-import {actionTypes} from '../includes/consts';
+import {actionTypes} from './consts';
 
 export const resetFilters = () => {
     return (dispatch) => {
@@ -8,18 +8,11 @@ export const resetFilters = () => {
     }
 }
 
-export const handleChangeSearchText = (searchText) => {
+export const searchItems = (showPIIonly,searchText) => {
     return (dispatch) => {
         dispatch({
-            type: actionTypes.SEARCH_TEXT,
-            searchText
-        })
-    }
-}
-export const toggleShowPIIonly = (showPIIonly) => {
-    return (dispatch) => {
-        dispatch({
-            type: actionTypes.SHOW_PII_ONLY,
+            type: actionTypes.SEARCH_ITEMS,
+            searchText,
             showPIIonly
         })
     }

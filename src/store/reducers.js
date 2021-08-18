@@ -1,4 +1,4 @@
-import {defaultState, actionTypes} from '../includes/consts';
+import {actionTypes, defaultState} from './consts';
 
 const reducer = (state = defaultState, action) => {
     let newState, groupParent, itemArr;
@@ -6,11 +6,9 @@ const reducer = (state = defaultState, action) => {
 
     switch (action.type) {
         case actionTypes.RESET_FILTERS:
-            return Object.assign({}, state, {showPIIonly: false, searchText: null});
-        case actionTypes.SHOW_PII_ONLY:
-            return Object.assign({}, state, {showPIIonly: action.showPIIonly});
-        case actionTypes.SEARCH_TEXT:
-            return Object.assign({}, state, {searchText: action.searchText});
+            return Object.assign({}, state, {showPIIonly: false, searchText: ''});
+        case actionTypes.SEARCH_ITEMS:
+            return Object.assign({}, state, {showPIIonly: action.showPIIonly, searchText: action.searchText});
         case actionTypes.SET_PII:
             groupParent = state[activeTab][group];
             itemArr = {...groupParent[index]};

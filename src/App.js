@@ -1,18 +1,18 @@
 import React from 'react';
-import APIHeader from './components/APIHeader';
-import Groups from './components/Groups';
-import Tabs from './components/Tabs';
-import Search from './components/Search';
+import Header from './components/header';
+import List from './components/list';
+import Tabs from './components/tabs';
+import Search from './components/search';
 
 export default function App() {
   return (
     <div className="saltApp">
-          <APIHeader/>
+          <Header/>
           <Tabs/>
-          <div className="content-wrap">
+          <main>
               <Search/>
-              <Groups/>
-          </div>
+              <List/>
+          </main>
       </div>
   );
 }

@@ -1,7 +1,8 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setActiveTab } from '../store/actions';
-import { ACTIVE_TAB_REQUEST, ACTIVE_TAB_RESPONSE} from '../includes/consts';
+import { setActiveTab } from '../../store/actions';
+import { ACTIVE_TAB_REQUEST, ACTIVE_TAB_RESPONSE} from '../../store/consts';
+import './index.scss';
 
 const Tabs = () => {
     const activeTab = useSelector((state) => state.activeTab);
@@ -21,11 +22,11 @@ const Tabs = () => {
     ];
 
     return (
-      <div className="tabs">
+      <nav>
         {buttons.map(({type, isActive, title}, i) => 
-          <button key={i} onClick={() => dispatch(setActiveTab(type))} className={`tab-button${isActive ? ' on' : ''}`}>{title}</button>
+          <button key={i} onClick={() => dispatch(setActiveTab(type))} className={`${isActive ? 'on' : ''}`}>{title}</button>
         )}
-      </div>
+      </nav>
     )
 }
 
